@@ -1,20 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-const ll N=1e5+20;
-ll dp[N];
+const ll N=10020;
+ll dp[N][N];
 
 ll maxWeight(ll n, ll w, ll weight[], ll val[])
 {
     if(n<0 || w==0) return 0;
-    if(dp[n] != -1) return dp[n];
+    if(dp[n][w] != -1) return dp[n][w];
     if(weight[n]<= w)
     {
         ll op1 = maxWeight(n-1,w-weight[n],weight,val)+val[n];
         ll op2 = maxWeight(n-1,w,weight,val);
-        return dp[n] = max(op1,op2); 
+        return dp[n][w] = max(op1,op2); 
     }
-    else return maxWeight(n-1,w,weight,val);
+    else return dp[n][w] = maxWeight(n-1,w,weight,val);
 }
 
 int main() {
