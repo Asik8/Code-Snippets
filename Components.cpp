@@ -4,11 +4,11 @@ const int N = 1e5 + 5;
 vector<int> v[N];
 bool vis[N];
 
-void dfs(int src)
+void dfs(int s)
 {
-    cout << src << endl;
-    vis[src] = true;
-    for (int child : v[src])
+    cout << s << endl;
+    vis[s] = true;
+    for (int child : v[s])
     {
         if (!vis[child])
             dfs(child);
