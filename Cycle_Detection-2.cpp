@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define py cout<<"YES\n";
+#define pn cout<<"NO\n";
 const int N = 1e5 + 5;
 bool vis[N];
 vector<int> v[N];
@@ -33,15 +35,8 @@ int main()
     memset(par, -1, sizeof(par));
     f = false;
     for (int i = 0; i < n; i++)
-    {
-        if (!vis[i])
-        {
-            dfs(i);
-        }
-    }
-    if (f)
-        cout << "Cycle detected";
-    else
-        cout << "Cycle not detected";
+        if (!vis[i]) dfs(i);
+    if (f) py
+    else pn
     return 0;
 }
