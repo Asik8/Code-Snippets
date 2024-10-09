@@ -1,10 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define py cout<<"YES\n";
+#define pn cout<<"NO\n";
 const int N = 1e5 + 5;
 bool vis[N];
-vector<int> adj[N];
-int parentArray[N];
+vector<int> v[N];
+int par[N];
 bool f;
+
 void bfs(int s)
 {
     queue<int> q;
@@ -12,20 +15,21 @@ void bfs(int s)
     vis[s] = true;
     while (!q.empty())
     {
-        int parent = q.front();
+        int p = q.front();
         q.pop();
-        for (int child : adj[parent])
+        for (int child : v[p])
         {
-            if (vis[child] && parentArray[parent] != child) f = true;
+            if (vis[child] && par[p] != child) f = true;
             if (!vis[child])
             {
                 vis[child] = true;
-                parentArray[child] = parent;
+                par[child] = p;
                 q.push(child);
             }
         }
     }
 }
+
 int main()
 {
     int n, e;
@@ -34,26 +38,17 @@ int main()
     {
         int a, b;
         cin >> a >> b;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
+        v[a].push_back(b);
+        v[b].push_back(a);
     }
     memset(vis, false, sizeof(vis));
-    memset(parentArray, -1, sizeof(parentArray));
+    memset(par, -1, sizeof(par));
     f = false;
     for (int i = 0; i < n; i++)
     {
-        if (!vis[i])
-        {
-            bfs(i);
-        }
+        if (!vis[i]) bfs(i);
     }
-    if (f)
-    {
-        cout << "Cycle found";
-    }
-    else
-    {
-        cout << "Cycle not found";
-    }
+    if (f) py
+    else pn
     return 0;
 }
