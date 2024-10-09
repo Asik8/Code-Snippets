@@ -1,0 +1,1 @@
+{"name":"Local: BFS-1","url":"d:\\Codes\\Snippet Codes\\BFS-1.cpp","tests":[{"id":1728450756685,"input":"10 10\n0 1\n1 2\n0 4\n1 3\n2 0\n3 4\n1 5\n3 6\n7 8\n8 9\n0","output":"0 0\n1 1\n2 1\n3 2\n4 1\n5 2\n6 3\n7 -1\n8 -1\n9 -1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Codes\\Snippet Codes\\BFS-1.cpp","group":"local","local":true}
