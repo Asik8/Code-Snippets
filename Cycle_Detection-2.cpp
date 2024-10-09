@@ -3,20 +3,17 @@ using namespace std;
 const int N = 1e5 + 5;
 bool vis[N];
 vector<int> v[N];
-int parent[N];
+int par[N];
 bool f;
 void dfs(int p)
 {
     vis[p] = true;
     for (int child : v[p])
     {
-        if (vis[child] && child != parent[p])
-        {
-            f = true;
-        }
+        if (vis[child] && child != par[p]) f = true;
         if (!vis[child])
         {
-            parent[child] = p;
+            par[child] = p;
             dfs(child);
         }
     }
@@ -33,7 +30,7 @@ int main()
         v[b].push_back(a);
     }
     memset(vis, false, sizeof(vis));
-    memset(parent, -1, sizeof(parent));
+    memset(par, -1, sizeof(par));
     f = false;
     for (int i = 0; i < n; i++)
     {
