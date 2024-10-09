@@ -7,6 +7,7 @@ using namespace std;
 vector<ll> ar[sz];
 bool vis[sz];
 ll level[sz]; 
+ll parent[sz];
 
 void bfs(ll src)
 {
@@ -25,6 +26,7 @@ void bfs(ll src)
                 q.push(x);
                 vis[x] = true;
                 level[x] = level[n]+1;
+                parent[x] = n;
             }
         }
     }
@@ -40,12 +42,22 @@ int main() {
         ll a,b;
         cin>>a>>b;
         ar[a].pb(b);
+        ar[b].pb(a);
     }
-    ll src;
-    cin>>src;
+    ll src,des;
+    cin>>src>>des;
     memset(vis,false,sizeof(vis));
     memset(level,-1,sizeof(level));
+    memset(parent,-1,sizeof(parent));
     bfs(src);
-    for(int i=0;i<n;i++) cout<<i<<" "<<level[i]<<endl;
+    vector <ll> v;
+    ll x = des;
+    while(x!=-1)
+    {
+        if(x != -1) v.pb(x);
+        x = parent[x];
+    }
+    reverse(v.begin(),v.end());
+    for(ll l:v) cout<<l<<" ";
     return 0;
 }
