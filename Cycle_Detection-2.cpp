@@ -2,21 +2,21 @@
 using namespace std;
 const int N = 1e5 + 5;
 bool vis[N];
-vector<int> adj[N];
-int parentArray[N];
+vector<int> v[N];
+int parent[N];
 bool f;
-void dfs(int parent)
+void dfs(int p)
 {
-    vis[parent] = true;
-    for (int child : adj[parent])
+    vis[p] = true;
+    for (int child : v[p])
     {
-        if (vis[child] && child != parentArray[parent])
+        if (vis[child] && child != parent[p])
         {
             f = true;
         }
         if (!vis[child])
         {
-            parentArray[child] = parent;
+            parent[child] = p;
             dfs(child);
         }
     }
@@ -29,11 +29,11 @@ int main()
     {
         int a, b;
         cin >> a >> b;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
+        v[a].push_back(b);
+        v[b].push_back(a);
     }
     memset(vis, false, sizeof(vis));
-    memset(parentArray, -1, sizeof(parentArray));
+    memset(parent, -1, sizeof(parent));
     f = false;
     for (int i = 0; i < n; i++)
     {
