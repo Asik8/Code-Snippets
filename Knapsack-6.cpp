@@ -37,6 +37,6 @@ int main() {
     ll t;
     cin>>t;   
     memset(dp,-1,sizeof(dp)); 
-    cout<<SubsetSum(n,a,s)<<endl;
+    cout<<SubsetSum(n,a,((s+t)/2))<<endl;
     return 0;
 }
