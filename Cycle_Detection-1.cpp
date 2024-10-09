@@ -4,7 +4,7 @@ const int N = 1e5 + 5;
 bool vis[N];
 vector<int> adj[N];
 int parentArray[N];
-bool ans;
+bool f;
 void bfs(int s)
 {
     queue<int> q;
@@ -16,11 +16,8 @@ void bfs(int s)
         q.pop();
         for (int child : adj[parent])
         {
-            if (vis[child] == true && parentArray[parent] != child)
-            {
-                ans = true;
-            }
-            if (vis[child] == false)
+            if (vis[child] && parentArray[parent] != child) f = true;
+            if (!vis[child])
             {
                 vis[child] = true;
                 parentArray[child] = parent;
@@ -42,7 +39,7 @@ int main()
     }
     memset(vis, false, sizeof(vis));
     memset(parentArray, -1, sizeof(parentArray));
-    ans = false;
+    f = false;
     for (int i = 0; i < n; i++)
     {
         if (!vis[i])
@@ -50,7 +47,7 @@ int main()
             bfs(i);
         }
     }
-    if (ans)
+    if (f)
     {
         cout << "Cycle found";
     }
