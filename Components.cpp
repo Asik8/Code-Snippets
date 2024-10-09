@@ -10,7 +10,7 @@ void dfs(int src)
     vis[src] = true;
     for (int child : v[src])
     {
-        if (vis[child] == false)
+        if (!vis[child])
             dfs(child);
     }
 }
