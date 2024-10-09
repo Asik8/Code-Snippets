@@ -1,0 +1,1 @@
+{"name":"Local: Knapsack-5","url":"d:\\Codes\\Snippet Codes\\Knapsack-5.cpp","tests":[{"id":1728440558775,"input":"4\n1 5 4 11","output":"1"},{"id":1728442107509,"input":"4\n1 2 4 11","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Codes\\Snippet Codes\\Knapsack-5.cpp","group":"local","local":true}
