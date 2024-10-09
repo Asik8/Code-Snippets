@@ -10,7 +10,7 @@ void dfs(int parent)
     vis[parent] = true;
     for (int child : adj[parent])
     {
-        if (vis[child] == true && child != parentArray[parent])
+        if (vis[child] && child != parentArray[parent])
         {
             ans = true;
         }
