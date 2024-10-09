@@ -4,7 +4,7 @@ const int N = 1e5 + 5;
 bool vis[N];
 vector<int> adj[N];
 int parentArray[N];
-bool ans;
+bool f;
 void dfs(int parent)
 {
     vis[parent] = true;
@@ -12,7 +12,7 @@ void dfs(int parent)
     {
         if (vis[child] && child != parentArray[parent])
         {
-            ans = true;
+            f = true;
         }
         if (!vis[child])
         {
@@ -34,7 +34,7 @@ int main()
     }
     memset(vis, false, sizeof(vis));
     memset(parentArray, -1, sizeof(parentArray));
-    ans = false;
+    f = false;
     for (int i = 0; i < n; i++)
     {
         if (!vis[i])
@@ -42,7 +42,7 @@ int main()
             dfs(i);
         }
     }
-    if (ans)
+    if (f)
         cout << "Cycle detected";
     else
         cout << "Cycle not detected";
