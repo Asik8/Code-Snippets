@@ -33,15 +33,5 @@ int main()
             }
         }
     }
-
-    // Needed to detect Negative Cycle
-    // for (int i = 0; i < n; i++)
-    // {
-    //     if (a[i][i] < 0)
-    //     {
-    //         cout << "Cycle detected" << endl;
-    //         break;
-    //     }
-    // }
     return 0;
 }
