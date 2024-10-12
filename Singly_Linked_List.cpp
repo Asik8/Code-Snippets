@@ -78,30 +78,24 @@ void insert_tail(Node *&head, Node *&tail, int val) {
 }
 
 int main() {
-    Node *head = new Node(10);
-    Node *a = new Node(20);
-    Node *b = new Node(30);
-    Node *c = new Node(40);
-    Node *d = new Node(50);
-    Node *tail = d;
-    head->next = a;
-    a->next = b;
-    b->next = c;
-    c->next = d;
-    print_linked_list(head);
+    Node *head = NULL;
+    Node *tail = NULL;
+
     int choice, pos, val;
     while (true) {
         cout << "\n1. Insert at position\n2. Insert at head\n3. Insert at tail\n4. Delete node at position\n5. Delete head\n6. Print linked list\n7. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-
         if (choice == 1) {
             cout << "Enter position and value: ";
             cin >> pos >> val;
-            if (pos > size(head)) {
+            if (head == NULL && pos != 0) {
+                cout << "Invalid Index. List is empty; you can only insert at position 0." << endl;
+            } else if (pos > size(head)) {
                 cout << "Invalid Index" << endl;
             } else if (pos == 0) {
                 insert_head(head, val);
+                if (tail == NULL) tail = head;
             } else if (pos == size(head)) {
                 insert_tail(head, tail, val);
             } else {
@@ -111,6 +105,7 @@ int main() {
             cout << "Enter value: ";
             cin >> val;
             insert_head(head, val);
+            if (tail == NULL) tail = head;
         } else if (choice == 3) {
             cout << "Enter value: ";
             cin >> val;
@@ -118,18 +113,30 @@ int main() {
         } else if (choice == 4) {
             cout << "Enter position: ";
             cin >> pos;
-            if (pos < 0 || pos >= size(head)) {
+            if (head == NULL) {
+                cout << "List is empty." << endl;
+            } else if (pos < 0 || pos >= size(head)) {
                 cout << "Invalid Index" << endl;
             } else if (pos == 0) {
                 delete_head(head);
+                if (head == NULL) tail = NULL;
             } else {
                 delete_node(head, pos);
             }
         } else if (choice == 5) {
-            delete_head(head);
+            if (head == NULL) {
+                cout << "List is empty." << endl;
+            } else {
+                delete_head(head);
+                if (head == NULL) tail = NULL;
+            }
         } else if (choice == 6) {
-            print_linked_list(head);
-            cout << "Tail-> " << tail->data << endl;
+            if (head == NULL) {
+                cout << "List is empty." << endl;
+            } else {
+                print_linked_list(head);
+                cout << "Tail-> " << tail->data << endl;
+            }
         } else if (choice == 7) {
             return 0;
         } else {
