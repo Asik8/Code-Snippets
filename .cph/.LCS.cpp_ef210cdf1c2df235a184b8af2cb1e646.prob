@@ -1,0 +1,1 @@
+{"name":"Local: LCS","url":"d:\\Codes\\Snippet Codes\\LCS.cpp","tests":[{"id":1729688334542,"input":"abcdfgr\nacfdgr","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Codes\\Snippet Codes\\LCS.cpp","group":"local","local":true}
